@@ -87,7 +87,7 @@ class AlbumSearch extends Component {
         {albums &&
           <ul>
             {albums.map((album, index) =>
-              <ConductorDetail key={index} data={album} name={album[0].artists[0].name} />
+              <ConductorDetail key={index} data={album} name={album[0].conductor} />
             )}
           </ul>
         }
@@ -102,9 +102,9 @@ class ConductorDetail extends Component {
     return (
       data &&
         <div>
-          <h1>{this.props.name}</h1>
+          <h1 className="conductor-header">{this.props.name}</h1>
           <li>
-            <ul>
+            <ul className="conductor-list">
               {data.map(data =>
                 <AlbumDetail key={data.id} data={data} />
               )}
