@@ -11,20 +11,24 @@ ul {
 }
 
 .album-detail {
-  display: flex;
+  margin-bottom: 5px;
+  clear: left;
   width: 50%;
-  max-height: 200px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  min-width: 650px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 0 20px 20px 0;
   transition: 0.3s;
 }
 
 .album-detail:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
 }
 
 .album-detail img {
-  max-height: 200px;
+  display: inline-block;
+  float: left;
   width: 200px;
+  height: 200px;
 }
 
 .conductor-header {
@@ -34,9 +38,29 @@ ul {
 }
 
 .album-text {
-  padding: 5px 0px 5px 15px;
+  min-height: 190px;
+  padding: 5px 0px;
 }
 
 .conductor-list {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+}
+
+.track-item {
+  overflow-x: scroll;
+  padding: 5px 0 5px 5px;
+  border-top: 1px solid black;
+  text-align: left;
+}
+
+.track-list {
+  clear: left;
+  padding: 0;
+  width: 100%;
+  list-style: inside;
+  list-style-type: decimal;
+}
+
+.audio-preview {
+  display: block;
 }
