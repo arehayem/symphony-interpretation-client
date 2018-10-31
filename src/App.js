@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Route} from 'react-router-dom';
 //import logo from './logo.svg';
 import './App.css';
 
@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     const pages = [
       {
-        name: 'Home',
+        name: 'Symphony Search',
         path: ''
       },
       {
@@ -34,16 +34,27 @@ class App extends Component {
   }
 }
 
-const SuggestConductor = () => {
-  return (
-    <div>Suggest a conductor</div>
-  )
-}
-
-const ConductorList = () => {
-  return (
-    <div>Conductor list</div>
-  )
+class Nav extends Component {
+  render() {
+    const {pages} = this.props;
+    return (
+      pages ? (
+        <ul className="navigation">
+          {
+            pages.map(page => (
+              <li key={page.path}>
+                <NavLink exact className="nav-link" activeClassName="active" to={`/${page.path}`}>
+                  {page.name}
+                </NavLink>
+              </li>
+            ))
+          }
+        </ul>
+      ) : (
+        <div>No Page...</div>
+      )
+    )
+  }
 }
 
 class AlbumSearch extends Component {
@@ -77,23 +88,37 @@ class AlbumSearch extends Component {
   render() {
     const {albums} = this.state;
     return (
-      <div>
+      <div className="page--album-search">
         <SearchBox
           onChange={this.onSearchValueChange}
           onSubmit={this.onSearchSubmit}
           value={this.state.value}
         />
-        <h2>Conductors</h2>
-        {albums &&
-          <ul>
-            {albums.map((album, index) =>
-              <ConductorDetail key={index} data={album} name={album[0].conductor} />
-            )}
-          </ul>
+        {albums.length > 0 &&
+          <div>
+            <h2>Conductor interpretations</h2>
+            <ul>
+              {albums.map((album, index) =>
+                <ConductorDetail key={index} data={album} name={album[0].conductor} />
+              )}
+            </ul>
+          </div>
         }
       </div>
     )
   }
+}
+
+const SuggestConductor = () => {
+  return (
+    <div className="page--suggest-conductor">Suggest a conductor</div>
+  )
+}
+
+const ConductorList = () => {
+  return (
+    <div className="page--conductor-list">Conductor list</div>
+  )
 }
 
 class ConductorDetail extends Component {
@@ -219,29 +244,6 @@ class Preview extends Component {
   }
 }
 
-class Nav extends Component {
-  render() {
-    const {pages} = this.props;
-    return (
-      pages ? (
-        <ul>
-          {
-            pages.map(page => (
-              <li key={page.path}>
-                <Link to={`/${page.path}`}>
-                  {page.name}
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
-      ) : (
-        <div>No Page...</div>
-      )
-    )
-  }
-}
-
 class SearchBox extends Component {
   constructor(props) {
     super(props);
@@ -262,7 +264,7 @@ class SearchBox extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-        Search:
+        Search a symphony: 
           <input type="text" id="search_term" value={this.props.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />

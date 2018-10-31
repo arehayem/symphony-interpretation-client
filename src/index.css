@@ -1,6 +1,8 @@
+/* STANDARD STYLES */
+
 body {
   margin: 0;
-  padding: 0px 10px;
+  padding: 0;
   font-family: sans-serif;
 }
 
@@ -10,13 +12,69 @@ ul {
   padding: 0;
 }
 
+/* NAV STYLES */
+
+ul.navigation {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+}
+
+.navigation li {
+  float: left;
+}
+
+.nav-link {
+  display: block;
+  text-decoration: none;
+  padding: 14px 16px;
+  color: white;
+}
+
+.nav-link.active {
+  background-color: #4CAF50 !important;
+}
+
+.nav-link:hover {
+  background-color: #111;
+}
+
+/* PAGE STYLES */
+
+.page--album-search {
+  padding: 10px 0;
+}
+
+.page--suggest-conductor {
+  padding: 10px 0;
+}
+
+.page--conductor-list {
+  padding: 10px 0;
+}
+
+.conductor-header {
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.conductor-list {
+  padding-bottom: 40px;
+}
+
+/* ALBUM CARD STYLES */
+
 .album-detail {
   margin-bottom: 5px;
   clear: left;
   width: 50%;
   min-width: 650px;
+  overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-  border-radius: 0 20px 20px 0;
+  border-radius: 5px;
   transition: 0.3s;
 }
 
@@ -31,20 +89,12 @@ ul {
   height: 200px;
 }
 
-.conductor-header {
-  text-align: left;
-  margin-left: 15px;
-  margin-bottom: 10px;
-}
-
 .album-text {
   min-height: 190px;
   padding: 5px 0px;
 }
 
-.conductor-list {
-  padding-bottom: 40px;
-}
+/* TRACK STYLES */
 
 .track-item {
   overflow-x: scroll;
@@ -63,4 +113,5 @@ ul {
 
 .audio-preview {
   display: block;
+  margin-top: 5px;
 }
